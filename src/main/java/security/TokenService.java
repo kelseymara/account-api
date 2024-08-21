@@ -1,4 +1,4 @@
-package com.example.account.security;
+package security;
 
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
