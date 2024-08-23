@@ -10,7 +10,8 @@ This stage builds upon Stage 3 by introducing security enhancements using OAuth2
 
 This class configures security settings and integrates OAuth2 and JWT for authentication and authorization. All customer endpoints are protected using OAuth2's and JWT tokens are validated to ensure only authorized users can access the data.
 
-2. TokenService generates JWT tokens after successful authentication. This service integrates with OAuth2, generating tokens that clients use to access secured resources (customer lists). The token encodes the user's identity and permissions and includes details like expiration time.
+2. TokenService.java
+This service generates JWT tokens after successful authentication. This service integrates with OAuth2, generating tokens that clients use to access secured resources (customer lists). The token encodes the user's identity and permissions and includes details like expiration time.
 
 
 ## Branches overview
