@@ -5,6 +5,7 @@ This repository contains code related to the Account API (Stage 4)
 This stage builds upon Stage 3 by introducing security enhancements using OAuth2 and JSON Web Token (JWT). This secures the customer data retrieval process and ensure that only authorized users can access protected resources (customer lists).
 
 ## Files Overview
+### These two files are new to stage 4
 1. SecurityConfig.java
 
 This class configures security settings and integrates OAuth2 and JWT for authentication and authorization. All customer endpoints are protected using OAuth2's and JWT tokens are validated to ensure only authorized users can access the data.
