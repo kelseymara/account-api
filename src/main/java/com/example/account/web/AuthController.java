@@ -15,7 +15,7 @@ public class AuthController {
     @Autowired
     TokenService tokenService;
 
-    @PostMapping("/token")
+    @PostMapping("/account/token")
     public String token(Authentication authentication) {
         return tokenService.generateToken(authentication);
     }
