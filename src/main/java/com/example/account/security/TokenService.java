@@ -36,24 +36,21 @@ public class TokenService {
     public String generateToken(Authentication authentication) {
         Instant now = Instant.now();
 
-        //  Create a space-delimited String containing all of the 
-        //  principal's authorities.  These will become the "scope" inside the JWT:
+        // 1. Create a string of user roles from their authorities:  These will become the "scope"/user permissions inside the JWT:
         String scope = authentication.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(" "));
     
-        //  Build a set of Claims to go inside the JWT.  Claims include 
-        //  subject (the principal's username),  issue date of the token, 
-        //  expiration time, and scopes, which map to the authorities.
+        // 2. Build the JWT with claims inside it like issuer, issue time, expiration, and user info:
         JwtClaimsSet claims = JwtClaimsSet.builder()
-                .issuer("self")
-                .issuedAt(now)
-                .expiresAt(now.plus(1, ChronoUnit.HOURS))
-                .subject(authentication.getName())
+                .issuer("self") // issuer (app is both issuing and validating token not from an external source)
+                .issuedAt(now) 
+                .expiresAt(now.plus(1, ChronoUnit.HOURS)) 
+                .subject(authentication.getName()) 
                 .claim("scope", scope)
                 .build();
 
-        //  The NimbusJwtEncoder creates and encodes the JWT 
+        //  3. NimbusJwtEncoder creates and encodes the JWT 
         //  from the claims.  It also signs it using the private key: 
         return encoder().encode(JwtEncoderParameters.from(claims)).getTokenValue();
     }
